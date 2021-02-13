@@ -1,8 +1,8 @@
 ## Our World In DAta (http://ourworldindata.org)
+install.packages("ggplot2")
 library(ggplot2)
-library(scales)
 rm(list=ls())
-df <- read.csv("./DATA/prevalence-of-drug-use-disorders-males-vs-females.csv")
+df <- read.csv("./prevalence-of-drug-use-disorders-males-vs-females.csv")
 US <- subset(df,Code =="USA" & Year >="1990")
 ##
 plot(US$Year,US$Male,main="Male",type="l")

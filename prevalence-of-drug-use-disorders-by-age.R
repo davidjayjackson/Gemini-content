@@ -30,4 +30,5 @@ ggplot(US) + geom_line(aes(x=Year,y=age_14,col="age_14")) +
   geom_line(aes(x=Year,y=age_34,col="age_34")) +
   geom_line(aes(x=Year,y=age_49,col="age_49")) +
   labs(title = "prevalence-of-drug-use-disorders-by-age: 12-49",
-       y="prevalence (%) ")
+       y="prevalence (%) ") +
+  guides(color = guide_legend(override.aes = list(size = 2)))

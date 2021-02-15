@@ -6,7 +6,6 @@
 # Gemini Browser: 
 # Gemini Capsule: gemini://gemlog.blue/users/cariboudatascienc
 ##disorders-by-age.csv")
-US <- 
 library(ggplot2)
 library(scales)
 library(dplyr)
@@ -32,8 +31,7 @@ ggplot(df) + geom_line(aes(x=Year,y=standard_percent)) +
   labs(title="Age-standardized Percent")
 
 ### User dplyr pivot_longer to re-arrange longer
-age_longer <- pivot_longer(df,cols=age_14:standard_percent)
-age_longer$Percent <- age_longer$value /100
+
 
 ### Age 5-14 and Age 15-49
 
@@ -54,4 +52,4 @@ age_longer %>% filter (name !="all_age_percent") %>% filter( name !="standard_pe
   filter( name !="age15_49") %>% filter(name !="age5_14") %>%
     ggplot() + geom_line(aes(x=Year,y=Percent,col=name)) +
   scale_y_continuous(labels=percent) + guides(color = guide_legend(override.aes = list(size = 2))) +
-  labs(title="Prevalence of Drug Use Disorders by Age")
+  labs(title="USA Prevalence of Drug Use Disorders by Age")

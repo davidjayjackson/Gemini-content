@@ -1,0 +1,40 @@
+---
+title: "mental-health-as-risk-for-drug-dependency"
+author: "IllicitDavid Jackson"
+date: "2/16/2021"
+output: 
+  html_document: 
+    fig_width: 8
+    fig_height: 6
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2) 
+library(scales)
+library(dplyr)
+library(ggtext)
+```
+
+## mental-health-as-risk-for-drug-dependency
+* http://ourworldindata.org
+* Quote: Increased risk of developing an illicit drug dependency or abuse disorder in individuals with a
+given mental health disorder, relative to those without. A value of 3.9 for PTSD, for example,
+would indicate that individuals with PTSD are 3.9 times as likely to develop drug dependency
+relative to those without.
+
+```{r}
+rm(list=ls())
+mental_head_risk <- read.csv("./DATA/mental-health-as-risk-for-drug-dependency.csv")
+colnames(mental_head_risk) <- c("Disorder","Risk")
+```
+
+## Plot Mental Health Risk 
+
+```{r}
+mental_head_risk  %>% ggplot() + geom_col(aes(x=reorder(Disorder,Risk),y=Risk)) +
+  coord_flip() + labs(title="Mental Health as Risk For Drug Dependency",
+                      x="Mental Disorders") +
+  geom_text(aes(x=Disorder,y=Risk,label=Risk),nudge_y = 0.5)
+```
+
